@@ -1,0 +1,182 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "dashboard",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:alp",
+      "version": "1.18.1",
+      "toolsId": "aaef1476-94a1-4008-a9eb-6f98d7039a34"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/vrp-analytics/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "dashboard.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "SolutionPerformanceAnalyticsList",
+          "target": "SolutionPerformanceAnalyticsList"
+        },
+        {
+          "pattern": "SolutionPerformanceAnalytics({key}):?query:",
+          "name": "SolutionPerformanceAnalyticsObjectPage",
+          "target": "SolutionPerformanceAnalyticsObjectPage"
+        },
+        {
+          "pattern": "SolutionPerformanceAnalytics({route_id})/vehicle_overviews({id})",
+          "name": "VehicleOverviewNested",
+          "target": "VehicleOverviewObjectPage"
+        }
+      ],
+      "targets": {
+        "SolutionPerformanceAnalyticsList": {
+          "type": "Component",
+          "id": "SolutionPerformanceAnalyticsList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/SolutionPerformanceAnalytics",
+              "variantManagement": "Page",
+              "navigation": {
+                "SolutionPerformanceAnalytics": {
+                  "detail": {
+                    "route": "SolutionPerformanceAnalyticsObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "AnalyticalTable",
+                    "selectionMode": "Single"
+                  }
+                }
+              },
+              "views": {
+                "paths": [
+                  {
+                    "primary": [
+                      {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#SolutionPerformance"
+                      }
+                    ],
+                    "secondary": [
+                      {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#SolutionPerformanceTable"
+                      }
+                    ],
+                    "defaultPath": "both"
+                  }
+                ]
+              },
+              "initialLoad": "Enabled"
+            }
+          }
+        },
+        "SolutionPerformanceAnalyticsObjectPage": {
+          "type": "Component",
+          "id": "SolutionPerformanceAnalyticsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/SolutionPerformanceAnalytics",
+              "navigation": {
+                "VehicleOverview": {
+                  "detail": {
+                    "route": "VehicleOverviewObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "VehicleOverviewObjectPage": {
+          "type": "Component",
+          "id": "VehicleOverviewObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/VehicleOverview"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  }
+}
