@@ -183,7 +183,21 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
-              "contextPath": "/SolutionPerformanceAnalytics/vehicle_overviews"
+              "contextPath": "/SolutionPerformanceAnalytics/vehicle_overviews",
+              "content": {
+                "body": {
+                  "sections": {
+                    "Map": {
+                      "template": "dashboard.ext.fragment.Map",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "FieldGroup#Overview"
+                      },
+                      "title": "Vehicle Map"
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -192,8 +206,8 @@
     "extends": {
       "extensions": {
         "sap.ui.controllerExtensions": {
-          "sap.fe.templates.ObjectPage.ObjectPageController#dashboard::SolutionPerformanceAnalyticsObjectPage": {
-            "controllerName": "dashboard.ext.controller.SolutionObjectController"
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "dashboard.ext.controller.SolutionAndVehicleOverviewControllerExt"
           }
         }
       }

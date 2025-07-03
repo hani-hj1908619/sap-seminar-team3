@@ -4,7 +4,7 @@ sap.ui.define(
     "use strict";
 
     return ControllerExtension.extend(
-      "dashboard.ext.controller.SolutionObjectController",
+      "dashboard.ext.controller.SolutionAndVehicleOverviewControllerExt",
       {
         // this section allows to extend lifecycle hooks or hooks provided by Fiori elements
         override: {
@@ -170,7 +170,6 @@ sap.ui.define(
                 if (data1.customer_code != 1000) {
                   spots.push(
                     new sap.ui.vbm.Spot({
-                      id: `vehicle_${data1.vehicle_code}_customer_${data1.customer_code}_order_${data1.customer_in_vehicle_route_order_number}`,
                       position: data1LatLong,
                       text:
                         data1.customer_code == 1000

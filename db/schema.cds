@@ -169,9 +169,9 @@ define view SolutionVehicleAggregates as
             sum(result_vehicle_total_driving_time_min)                            as total_driving_time            : Decimal,
             sum(result_vehicle_total_delivery_time_min)                           as total_delivery_time           : Decimal,
             //new
-            avg(result_vehicle_total_active_time_min) as total_active_time:Decimal,
-            avg(vehicle_total_volume_m3) as max_volume : Decimal,
-            avg(vehicle_total_weight_kg) as empty_weight  : Decimal,
+            avg(result_vehicle_total_active_time_min)                             as total_active_time             : Decimal,
+            avg(vehicle_total_volume_m3)                                          as max_volume                    : Decimal,
+            avg(vehicle_total_weight_kg)                                          as empty_weight                  : Decimal,
             //old
             count(case
                       when result_vehicle_final_cost_km > 0
@@ -307,9 +307,12 @@ define view VehicleOverview as
                 else floor($self.volume_utilization_pct / 10) * 0.5
             end as Volume_Utilization_Rating : Decimal,
 
-    }
-    where
-        result_vehicle_final_cost_km > 0;
+            route_result_overviews           : Association to many RouteResultsOverview
+                                                   on  route_result_overviews.route_id     = route_id
+                                                   and route_result_overviews.vehicle_code = vehicle_code,
+        }
+        where
+            result_vehicle_final_cost_km > 0;
 
 
 define view RouteOverview as
