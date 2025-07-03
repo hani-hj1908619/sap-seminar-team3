@@ -28,6 +28,9 @@ service VRPAnalyticsService @(path: '/vrp-analytics') {
     }
     entity VehicleOverview              as projection on vrp.VehicleOverview;
 
+    @readonly
+    entity RouteResultsOverview                as projection on vrp.RouteResultsOverview;
+
     // Main analytical entity for ALP
     @Aggregation.ApplySupported: {
         Transformations       : [
