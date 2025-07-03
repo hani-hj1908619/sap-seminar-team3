@@ -237,10 +237,12 @@ annotate service.SolutionPerformanceAnalytics with @(UI: {
         {
             $Type : 'UI.ReferenceFacet',
             Label : 'Vehicles',
+            ID    : 'VehicleComparisonChart',
             Target: 'vehicle_overviews/@UI.Chart#VehicleComparisonChart'
         },
         {
             $Type : 'UI.ReferenceFacet',
+            ID    : 'VehicleOverviewTable',
             Target: 'vehicle_overviews/@UI.LineItem#VehicleOverviewTable'
         }
     ],
