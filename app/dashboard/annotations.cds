@@ -236,20 +236,21 @@ annotate service.SolutionPerformanceAnalytics with @(UI: {
         },
         {
             $Type : 'UI.ReferenceFacet',
-            Label : 'Vehicles',
+            Label : 'Vehicle Comparison',
             ID    : 'VehicleComparisonChart',
             Target: 'vehicle_overviews/@UI.Chart#VehicleComparisonChart'
         },
         {
             $Type : 'UI.ReferenceFacet',
             ID    : 'VehicleOverviewTable',
+            Label : 'Vehicle List',
             Target: 'vehicle_overviews/@UI.LineItem#VehicleOverviewTable'
         }
     ],
 });
 
 annotate service.VehicleOverview with @(UI.Chart #VehicleComparisonChart: {
-    Title          : 'Vehicle Comparison',
+    // Title          : 'Vehicle Comparison',
     ChartType      : #Column,
     Dimensions     : [vehicle_code],
     DynamicMeasures: [
