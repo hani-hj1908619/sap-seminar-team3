@@ -141,30 +141,6 @@ annotate service.SolutionPerformanceAnalytics with @(UI.LineItem #SolutionPerfor
     }
 ], );
 
-// Line Item for vehicles sub table
-annotate service.VehicleOverview with @(UI.LineItem #VehicleOverviewTable: [
-    {
-        $Type: 'UI.DataField',
-        Value: vehicle_code,
-        Label: 'Vehicle Code',
-    },
-    {
-        $Type: 'UI.DataField',
-        Value: weight_utilization_pct,
-        Label: 'Weight Utilization (%)'
-    },
-    {
-        $Type: 'UI.DataField',
-        Value: volume_utilization_pct,
-        Label: 'Volume Utilization (%)'
-    },
-    {
-        $Type: 'UI.DataField',
-        Value: result_vehicle_final_cost_km,
-        Label: 'Final Cost (km)'
-    }
-]);
-
 // ========================================
 // SOLUTION OBJECT PAGE
 // ========================================
@@ -259,6 +235,31 @@ annotate service.VehicleOverview with @(UI.Chart #VehicleComparisonChart: {
         '@Analytics.AggregatedProperty#Vehicle_Cost_Per_KG'
     ],
 });
+
+// Line Item for vehicles sub table
+annotate service.VehicleOverview with @(UI.LineItem #VehicleOverviewTable: [
+    {
+        $Type: 'UI.DataField',
+        Value: vehicle_code,
+        Label: 'Vehicle Code',
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: weight_utilization_pct,
+        Label: 'Weight Utilization (%)'
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: volume_utilization_pct,
+        Label: 'Volume Utilization (%)'
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: result_vehicle_final_cost_km,
+        Label: 'Final Cost (km)'
+    }
+]);
+
 
 // ========================================
 // VEHICLE OVERVIEW OBJECT PAGE

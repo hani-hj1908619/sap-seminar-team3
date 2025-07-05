@@ -166,15 +166,19 @@ sap.ui.define(
                     })
                   );
                 }
+                
                 // add a Spot for each customer - skip depot
+                const spotLabel = oBindingContext
+                  .getPath()
+                  .includes("vehicle_overviews")
+                  ? `STOP ${data1.customer_in_vehicle_route_order_number}`
+                  : data1.customer_code;
+
                 if (data1.customer_code != 1000) {
                   spots.push(
                     new sap.ui.vbm.Spot({
                       position: data1LatLong,
-                      text:
-                        data1.customer_code == 1000
-                          ? "DEPOT"
-                          : data1.customer_code,
+                      text: data1.customer_code == 1000 ? "DEPOT" : spotLabel,
                     })
                   );
                 }
