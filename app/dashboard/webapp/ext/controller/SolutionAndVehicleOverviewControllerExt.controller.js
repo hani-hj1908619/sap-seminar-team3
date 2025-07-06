@@ -166,7 +166,7 @@ sap.ui.define(
                     })
                   );
                 }
-                
+
                 // add a Spot for each customer - skip depot
                 const spotLabel = oBindingContext
                   .getPath()
@@ -179,6 +179,16 @@ sap.ui.define(
                     new sap.ui.vbm.Spot({
                       position: data1LatLong,
                       text: data1.customer_code == 1000 ? "DEPOT" : spotLabel,
+                      type:
+                        data1.time_window_compliance == 1 ? "Success" : "Error",
+                      click: this.onPressSpot.bind(this),
+                      customData: [
+                        new sap.ui.core.CustomData({
+                          key: "spotData",
+                          value: data1,
+                          writeToDom: false,
+                        }),
+                      ],
                     })
                   );
                 }
@@ -198,6 +208,41 @@ sap.ui.define(
               );
             },
           },
+        },
+
+        onPressSpot: async function (oEvent) {
+          // Handle the press event on the map
+          const oSpot = oEvent.getSource();
+          const spotData = oSpot.data("spotData");
+
+          // Convert minutes to HH:mm format
+          const toCustomerMin = spotData.come_to_the_customer_at_min;
+          const hours = Math.floor(toCustomerMin / 60);
+          const minutes = Math.floor(toCustomerMin % 60);
+          const arrivalTime = `${hours.toString().padStart(2, "0")}:${minutes
+            .toString()
+            .padStart(2, "0")}`;
+
+          const dialogData = {
+            arrivalTime,
+            customerWindow: spotData.customer_time_window,
+            totalDeliveryMin: spotData.total_delivery_time_min,
+          };
+
+          const oDialogModel = new sap.ui.model.json.JSONModel(dialogData);
+
+          const oExtensionAPI = this.base.getExtensionAPI();
+          oExtensionAPI.oDialog ??= await oExtensionAPI.loadFragment({
+            name: "dashboard.ext.fragment.Dialog",
+            controller: this,
+          });
+
+          oExtensionAPI.oDialog.setModel(oDialogModel, "dialog");
+          oExtensionAPI.oDialog.open();
+        },
+        closeSpotDialog: function () {
+          const oExtensionAPI = this.base.getExtensionAPI();
+          oExtensionAPI.oDialog.close();
         },
       }
     );

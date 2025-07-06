@@ -1,0 +1,19 @@
+<Dialog xmlns="sap.m" title="Delivery Details">
+  <VBox class="sapUiSmallMargin">
+    <HBox>
+      <Text text="Arrival Time:" class="sapUiSmallMarginEnd"/>
+      <Text text="{dialog>/arrivalTime}" />
+    </HBox>
+    <HBox>
+      <Text text="Customer Time Window:" class="sapUiSmallMarginEnd"/>
+      <Text text="{dialog>/customerWindow}" />
+    </HBox>
+    <HBox>
+      <Text text="Total Delivery Time (min):" class="sapUiSmallMarginEnd"/>
+      <Text text="{dialog>/totalDeliveryMin}" />
+    </HBox>
+  </VBox>
+  <buttons>
+    <Button text="Close" press="closeSpotDialog" />
+  </buttons>
+</Dialog>
