@@ -213,11 +213,17 @@ define view SolutionRouteResultsAggregates as
             count( * ) as route_total_stops          : Integer,
             round(
                 1.0 * sum(case
-                              when come_to_the_customer_at_min between customer.customer_time_window_from_min
+                              when customer_code != '1000'
+                                   and come_to_the_customer_at_min between customer.customer_time_window_from_min
                                    and customer.customer_time_window_to_min
                                    then 1
                               else 0
-                          end) / count( * ) * 100, 1
+                          end) / nullif(
+                    count(case
+                              when customer_code != '1000'
+                                   then 1
+                          end), 0
+                ) * 100, 1
             )          as time_window_compliance_pct : Decimal
     }
     group by
@@ -243,6 +249,8 @@ define view RouteResultsOverview as
             customer_time_window,
 
             case
+                when customer_code = '1000'
+                     then 1
                 when come_to_the_customer_at_min between customer.customer_time_window_from_min
                      and customer.customer_time_window_to_min
                      then 1
