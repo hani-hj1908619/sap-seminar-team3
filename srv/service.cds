@@ -76,37 +76,6 @@ service VRPAnalyticsService @(path: '/vrp-analytics') {
                 vehicle_aggregate.avg_volume_utilization_rating
         };
 
-
-    // Customer Delivery Analytics
-    @Aggregation.ApplySupported.Transformations: [
-        'aggregate',
-        'groupby',
-        'filter'
-    ]
-    entity CustomerDeliveryAnalytics    as
-        select from vrp.CustomerDeliveries {
-            key id,
-                route_id,
-                customer_code,
-                delivery_status,
-                total_weight_kg,
-                total_volume_m3,
-                come_to_the_customer_at_min,
-                customer_time_window_from_min,
-                customer_time_window_to_min,
-                case
-                    when delivery_status = 'On Time'
-                         then 1
-                    else 0
-                end as on_time_delivery : Integer,
-
-                case
-                    when delivery_status = 'Late'
-                         then 1
-                    else 0
-                end as late_delivery    : Integer
-        };
-
     function summary() returns LargeString;
 }
 
@@ -127,14 +96,6 @@ annotate VRPAnalyticsService.SolutionPerformanceAnalytics with {
     avg_volume_utilization      @title: 'Avg Volume Utilization (%)';
     total_driving_time          @title: 'Total Driving Time'      @Measures.Unit: 'min';
     total_delivery_time         @title: 'Total Delivery Time'     @Measures.Unit: 'min';
-}
-
-
-annotate VRPAnalyticsService.CustomerDeliveryAnalytics with {
-    customer_code    @title: 'Customer Code';
-    delivery_status  @title: 'Delivery Status';
-    on_time_delivery @title: 'On Time Delivery';
-    late_delivery    @title: 'Late Delivery';
 }
 
 service CorrelationService @(path: '/vrp-analytics-task3') {
