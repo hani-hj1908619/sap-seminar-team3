@@ -29,7 +29,7 @@ service VRPAnalyticsService @(path: '/vrp-analytics') {
     entity VehicleOverview              as projection on vrp.VehicleOverview;
 
     @readonly
-    entity RouteResultsOverview                as projection on vrp.RouteResultsOverview;
+    entity RouteResultsOverview         as projection on vrp.RouteResultsOverview;
 
     // Main analytical entity for ALP
     @Aggregation.ApplySupported: {
@@ -106,6 +106,8 @@ service VRPAnalyticsService @(path: '/vrp-analytics') {
                     else 0
                 end as late_delivery    : Integer
         };
+
+    function summary() returns LargeString;
 }
 
 // ANNOTATIONS - For UI titles
@@ -134,16 +136,17 @@ annotate VRPAnalyticsService.CustomerDeliveryAnalytics with {
     on_time_delivery @title: 'On Time Delivery';
     late_delivery    @title: 'Late Delivery';
 }
+
 service CorrelationService @(path: '/vrp-analytics-task3') {
     // Supporting entities for drill down
     @readonly  @cds.redirection.target
-    entity RouteSettings                as projection on vrp.RouteSettings;
+    entity RouteSettings                 as projection on vrp.RouteSettings;
 
     @readonly  @cds.redirection.target
-    entity Vehicles                     as projection on vrp.Vehicles;
+    entity Vehicles                      as projection on vrp.Vehicles;
 
     @readonly  @cds.redirection.target
-    entity Customers                    as projection on vrp.Customers;
+    entity Customers                     as projection on vrp.Customers;
 
     @readonly
     @Aggregation.ApplySupported: {
@@ -159,7 +162,7 @@ service CorrelationService @(path: '/vrp-analytics-task3') {
 
         ]
     }
-    entity VehicleOverview              as projection on vrp.VehicleOverview;
+    entity VehicleOverview               as projection on vrp.VehicleOverview;
 
     // Main analytical entity for ALP
     @Aggregation.ApplySupported: {
@@ -168,8 +171,11 @@ service CorrelationService @(path: '/vrp-analytics-task3') {
             'groupby',
             'filter'
         ],
-        GroupableProperties   : ['route_id','total_distance',
-        'customer_count', 'result_total_cost_km'
+        GroupableProperties   : [
+            'route_id',
+            'total_distance',
+            'customer_count',
+            'result_total_cost_km'
         ],
         AggregatableProperties: [
             {Property: 'result_total_cost_km'},
@@ -214,8 +220,9 @@ service CorrelationService @(path: '/vrp-analytics-task3') {
                 vehicle_aggregate.empty_weight
 
         };
-        
+
 }
+
 annotate CorrelationService.SolutionPerformanceAnalytics3 with {
     route_id                    @title: 'Route ID';
     route_date                  @title: 'Route Date';
@@ -231,7 +238,7 @@ annotate CorrelationService.SolutionPerformanceAnalytics3 with {
     avg_volume_utilization      @title: 'Avg Volume Utilization (%)';
     total_driving_time          @title: 'Total Driving Time'      @Measures.Unit: 'min';
     total_delivery_time         @title: 'Total Delivery Time'     @Measures.Unit: 'min';
-    total_active_time         @title: 'Total Time'     @Measures.Unit: 'min';
-    max_volume @title : 'Total Volume' @Measures.Unit : 'm³';
-    empty_weight @title:'Empty Weight' @Measure.Uni : 'kg';
+    total_active_time           @title: 'Total Time'              @Measures.Unit: 'min';
+    max_volume                  @title: 'Total Volume'            @Measures.Unit: 'm³';
+    empty_weight                @title: 'Empty Weight'            @Measure.Uni  : 'kg';
 }
