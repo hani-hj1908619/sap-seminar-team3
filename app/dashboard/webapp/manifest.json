@@ -24,6 +24,19 @@
           "odataVersion": "4.0"
         }
       }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "dashboard-dashboard": {
+          "semanticObject": "dashboard",
+          "action": "dashboard",
+          "title": "{{dashboard-dashboard.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
     }
   },
   "sap.ui": {
@@ -150,7 +163,29 @@
                   }
                 ]
               },
-              "initialLoad": "Enabled"
+              "initialLoad": "Enabled",
+              "content": {
+                "header": {
+                  "actions": {
+                    "evaluate": {
+                      "press": "dashboard.ext.controller.Navigate.evaluate",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Evaluate"
+                    },
+                    "analyze": {
+                      "press": "dashboard.ext.controller.Navigate.analyze",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Analyze",
+                      "position": {
+                        "placement": "Before",
+                        "anchor": "evaluate"
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         },

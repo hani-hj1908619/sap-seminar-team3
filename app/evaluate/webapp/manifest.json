@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "test.project1",
+    "id": "evaluate.evaluate",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -12,12 +12,12 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:alp",
-      "version": "1.18.1",
-      "toolsId": "48d45339-fb38-42c7-9922-1322bc1eb0b6"
+      "version": "1.18.2",
+      "toolsId": "b229e619-f4eb-4278-a2ee-86788588aeba"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/vrp-analytics-task3/",
+        "uri": "/vrp-analytics-task4/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -27,10 +27,10 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "analyze-analyze": {
-          "semanticObject": "analyze",
-          "action": "analyze",
-          "title": "{{analyze-analyze.flpTitle}}",
+        "evaluate-evaluate": {
+          "semanticObject": "evaluate",
+          "action": "evaluate",
+          "title": "{{evaluate-evaluate.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -58,7 +58,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.136.2",
+      "minUI5Version": "1.138.0",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -73,7 +73,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "test.project1.i18n.i18n"
+          "bundleName": "evaluate.evaluate.i18n.i18n"
         }
       },
       "": {
@@ -98,45 +98,53 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "SolutionPerformanceAnalytics3List",
-          "target": "SolutionPerformanceAnalytics3List"
+          "name": "SolutionPerformanceAnalytics4List",
+          "target": "SolutionPerformanceAnalytics4List"
         },
         {
-          "pattern": "SolutionPerformanceAnalytics3({key}):?query:",
-          "name": "SolutionPerformanceAnalytics3ObjectPage",
-          "target": "SolutionPerformanceAnalytics3ObjectPage"
+          "pattern": "SolutionPerformanceAnalytics4({key}):?query:",
+          "name": "SolutionPerformanceAnalytics4ObjectPage",
+          "target": "SolutionPerformanceAnalytics4ObjectPage"
         }
       ],
       "targets": {
-        "SolutionPerformanceAnalytics3List": {
+        "SolutionPerformanceAnalytics4List": {
           "type": "Component",
-          "id": "SolutionPerformanceAnalytics3List",
+          "id": "SolutionPerformanceAnalytics4List",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/SolutionPerformanceAnalytics3",
+              "contextPath": "/SolutionPerformanceAnalytics4",
               "variantManagement": "Page",
               "navigation": {
-                "SolutionPerformanceAnalytics3": {
+                "SolutionPerformanceAnalytics4": {
                   "detail": {
-                    "route": "SolutionPerformanceAnalytics3ObjectPage"
+                    "route": "SolutionPerformanceAnalytics4ObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "AnalyticalTable",
+                    "selectionMode": "Auto"
                   }
                 }
               },
               "views": {
                 "paths": [
                   {
-                    "defaultPath": "both",
                     "primary": [
                       {
-                        "annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#CorrelationPresentation"
+                        "annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#EvaluationPresentation"
                       }
                     ],
                     "secondary": [
                       {
-                        "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#AnalyticTable"
+                        "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#EvaluationTable"
                       }
-                    ]
+                    ],
+                    "defaultPath": "both"
                   }
                 ]
               },
@@ -145,16 +153,16 @@
                 "header": {
                   "actions": {
                     "dashboard": {
-                      "press": "test.project1.ext.controller.Navigate.dashboard",
+                      "press": "evaluate.evaluate.ext.controller.Navigate.dashboard",
                       "visible": true,
                       "enabled": true,
                       "text": "Dashboard"
                     },
-                    "evaluate": {
-                      "press": "test.project1.ext.controller.Navigate.evaluate",
+                    "analyze": {
+                      "press": "evaluate.evaluate.ext.controller.Navigate.analyze",
                       "visible": true,
                       "enabled": true,
-                      "text": "Evaluate",
+                      "text": "Analyze",
                       "position": {
                         "placement": "After",
                         "anchor": "dashboard"
@@ -166,14 +174,14 @@
             }
           }
         },
-        "SolutionPerformanceAnalytics3ObjectPage": {
+        "SolutionPerformanceAnalytics4ObjectPage": {
           "type": "Component",
-          "id": "SolutionPerformanceAnalytics3ObjectPage",
+          "id": "SolutionPerformanceAnalytics4ObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/SolutionPerformanceAnalytics3"
+              "contextPath": "/SolutionPerformanceAnalytics4"
             }
           }
         }
