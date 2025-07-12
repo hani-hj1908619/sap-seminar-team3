@@ -100,11 +100,6 @@
           "pattern": ":?query:",
           "name": "SolutionPerformanceAnalytics3List",
           "target": "SolutionPerformanceAnalytics3List"
-        },
-        {
-          "pattern": "SolutionPerformanceAnalytics3({key}):?query:",
-          "name": "SolutionPerformanceAnalytics3ObjectPage",
-          "target": "SolutionPerformanceAnalytics3ObjectPage"
         }
       ],
       "targets": {
@@ -116,13 +111,7 @@
             "settings": {
               "contextPath": "/SolutionPerformanceAnalytics3",
               "variantManagement": "Page",
-              "navigation": {
-                "SolutionPerformanceAnalytics3": {
-                  "detail": {
-                    "route": "SolutionPerformanceAnalytics3ObjectPage"
-                  }
-                }
-              },
+              "navigation": {},
               "views": {
                 "paths": [
                   {
@@ -163,17 +152,6 @@
                   }
                 }
               }
-            }
-          }
-        },
-        "SolutionPerformanceAnalytics3ObjectPage": {
-          "type": "Component",
-          "id": "SolutionPerformanceAnalytics3ObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/SolutionPerformanceAnalytics3"
             }
           }
         }
