@@ -9,28 +9,26 @@
             window['sap-ushell-config'] = {
                 defaultRenderer: 'fiori2',
                 applications: {
-                    "evaluate-evaluate": {
-                        title: 'Evaluation',
-                        description: 'Evaluate',
-                        additionalInformation: 'SAPUI5.Component=evaluate.evaluate',
-                        applicationType: 'URL',
-                        url: "./evaluate/webapp",
-                        navigationMode: 'embedded'
-                    },
+                    
                     "dashboard-dashboard": {
-                        title: 'Dashboarding',
-                        description: 'Dashboard',
+                        title: 'Visualize & Evaluate',
                         additionalInformation: 'SAPUI5.Component=dashboard',
                         applicationType: 'URL',
                         url: "./dashboard/webapp",
                         navigationMode: 'embedded'
                     },
                     "analyze-analyze": {
-                        title: 'Analyzing',
-                        description: 'Analyze',
+                        title: 'Analyze',
                         additionalInformation: 'SAPUI5.Component=test.project1',
                         applicationType: 'URL',
                         url: "./project1/webapp",
+                        navigationMode: 'embedded'
+                    },
+                    "evaluate-evaluate": {
+                        title: 'Insights',
+                        additionalInformation: 'SAPUI5.Component=evaluate.evaluate',
+                        applicationType: 'URL',
+                        url: "./evaluate/webapp",
                         navigationMode: 'embedded'
                     },
                     

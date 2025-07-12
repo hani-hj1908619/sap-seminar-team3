@@ -6,7 +6,7 @@
     "metadataFilename": "",
     "serviceUrl": "http://localhost:4004/vrp-analytics/",
     "appName": "dashboard",
-    "appTitle": "VRP Solutions Dashboard",
+    "appTitle": "Visualize & Evaluate",
     "appDescription": "An SAP Fiori application.",
     "appNamespace": "",
     "ui5Theme": "sap_horizon",

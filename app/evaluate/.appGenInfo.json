@@ -6,7 +6,7 @@
     "metadataFilename": "",
     "serviceUrl": "http://localhost:4004/vrp-analytics-task4/",
     "appName": "evaluate",
-    "appTitle": "Evaluation",
+    "appTitle": "Solution Insights",
     "appDescription": "An SAP Fiori application.",
     "appNamespace": "evaluate",
     "ui5Theme": "sap_horizon",
