@@ -179,9 +179,7 @@ service CorrelationService @(path: '/vrp-analytics-task3') {
                 //new
                 vehicle_aggregate.max_volume,
                 vehicle_aggregate.empty_weight
-
         };
-
 }
 
 annotate CorrelationService.SolutionPerformanceAnalytics3 with {
@@ -199,20 +197,21 @@ annotate CorrelationService.SolutionPerformanceAnalytics3 with {
     avg_volume_utilization      @title: 'Avg Volume Utilization (%)';
     total_driving_time          @title: 'Total Driving Time'      @Measures.Unit: 'min';
     total_delivery_time         @title: 'Total Delivery Time'     @Measures.Unit: 'min';
-    total_active_time         @title: 'Total Time'     @Measures.Unit: 'min';
-    max_volume @title : 'Total Volume' @Measures.Unit : 'm³';
-    empty_weight @title:'Empty Weight' @Measure.Uni : 'kg';
+    total_active_time           @title: 'Total Time'              @Measures.Unit: 'min';
+    max_volume                  @title: 'Total Volume'            @Measures.Unit: 'm³';
+    empty_weight                @title: 'Empty Weight'            @Measure.Uni  : 'kg';
 }
+
 service EvaluationService @(path: '/vrp-analytics-task4') {
     // Supporting entities for drill down
     @readonly  @cds.redirection.target
-    entity RouteSettings                as projection on vrp.RouteSettings;
+    entity RouteSettings                 as projection on vrp.RouteSettings;
 
     @readonly  @cds.redirection.target
-    entity Vehicles                     as projection on vrp.Vehicles;
+    entity Vehicles                      as projection on vrp.Vehicles;
 
     @readonly  @cds.redirection.target
-    entity Customers                    as projection on vrp.Customers;
+    entity Customers                     as projection on vrp.Customers;
 
     @readonly
     @Aggregation.ApplySupported: {
@@ -228,7 +227,7 @@ service EvaluationService @(path: '/vrp-analytics-task4') {
 
         ]
     }
-    entity VehicleOverview              as projection on vrp.VehicleOverview;
+    entity VehicleOverview               as projection on vrp.VehicleOverview;
 
     // Main analytical entity for ALP
     @Aggregation.ApplySupported: {
@@ -237,7 +236,9 @@ service EvaluationService @(path: '/vrp-analytics-task4') {
             'groupby',
             'filter'
         ],
-        GroupableProperties   : ['route_id',result_total_cost_km
+        GroupableProperties   : [
+            'route_id',
+            result_total_cost_km
         ],
         AggregatableProperties: [
             {Property: 'result_total_cost_km'},
@@ -279,8 +280,9 @@ service EvaluationService @(path: '/vrp-analytics-task4') {
                 cost_per_item.cost_per_item
 
         };
-        
+
 }
+
 annotate EvaluationService.SolutionPerformanceAnalytics4 with {
     route_id                    @title: 'Route ID';
     route_date                  @title: 'Route Date';
@@ -296,10 +298,10 @@ annotate EvaluationService.SolutionPerformanceAnalytics4 with {
     avg_volume_utilization      @title: 'Avg Volume Utilization (%)';
     total_driving_time          @title: 'Total Driving Time'      @Measures.Unit: 'min';
     total_delivery_time         @title: 'Total Delivery Time'     @Measures.Unit: 'min';
-    total_active_time         @title: 'Total Time'     @Measures.Unit: 'min';
-    max_volume @title : 'Total Volume' @Measures.Unit : 'm³';
-    empty_weight @title:'Empty Weight' @Measure.Uni : 'kg';
-    cost_per_item@title : 'Cost of Items Delivered';
-    cost_per_volume@title : 'Cost of Volume Delivered';
-    cost_per_weight@title : 'Cost of Weight Delivered'
+    total_active_time           @title: 'Total Time'              @Measures.Unit: 'min';
+    max_volume                  @title: 'Total Volume'            @Measures.Unit: 'm³';
+    empty_weight                @title: 'Empty Weight'            @Measure.Uni  : 'kg';
+    cost_per_item               @title: 'Cost of Items Delivered';
+    cost_per_volume             @title: 'Cost of Volume Delivered';
+    cost_per_weight             @title: 'Cost of Weight Delivered'
 }
