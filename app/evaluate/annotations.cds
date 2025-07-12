@@ -22,6 +22,7 @@ annotate service.SolutionPerformanceAnalytics4 with @(
 
     UI.Chart #alpChart                                   : {
         $Type          : 'UI.ChartDefinitionType',
+        Title          : 'Route Cost Analysis',
         ChartType      : #VerticalBullet,
         Dimensions     : [
             route_id,
@@ -39,21 +40,21 @@ annotate service.SolutionPerformanceAnalytics4 with @(
         Name                : 'cost_per_item_average',
         AggregatableProperty: cost_per_item,
         AggregationMethod   : 'average',
-        @Common.Label       : 'cost_per_item (Average)',
+        @Common.Label       : 'Cost /item',
     },
     Analytics.AggregatedProperty #cost_per_weight_average: {
         $Type               : 'Analytics.AggregatedPropertyType',
         Name                : 'cost_per_weight_average',
         AggregatableProperty: cost_per_weight,
         AggregationMethod   : 'average',
-        @Common.Label       : 'cost_per_weight (Average)',
+        @Common.Label       : 'Cost /weight',
     },
     Analytics.AggregatedProperty #cost_per_volume_average: {
         $Type               : 'Analytics.AggregatedPropertyType',
         Name                : 'cost_per_volume_average',
         AggregatableProperty: cost_per_volume,
         AggregationMethod   : 'average',
-        @Common.Label       : 'cost_per_volume (Average)',
+        @Common.Label       : 'Cost /volume',
     },
 );
 

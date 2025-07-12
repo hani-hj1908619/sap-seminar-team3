@@ -158,12 +158,16 @@ define view SolutionTotalDistance as
     }
     group by
         route_id;
+
 define view TotalOutput as
-    select from Customers inner join RouteSettings on Customers.route_id =RouteSettings.route_id{
+    select from Customers
+    inner join RouteSettings
+        on Customers.route_id = RouteSettings.route_id
+    {
         key Customers.route_id,
-            result_total_cost_km/sum(total_weight_kg)as cost_per_weight: Decimal,
-            result_total_cost_km/sum(total_volume_m3)as cost_per_volume: Decimal,
-            result_total_cost_km/sum(number_of_articles) as cost_per_item: Decimal,
+            result_total_cost_km / sum(total_weight_kg)    as cost_per_weight : Decimal,
+            result_total_cost_km / sum(total_volume_m3)    as cost_per_volume : Decimal,
+            result_total_cost_km / sum(number_of_articles) as cost_per_item   : Decimal,
     }
     group by
         Customers.route_id;
@@ -327,9 +331,9 @@ define view VehicleOverview as
             route_result_overviews           : Association to many RouteResultsOverview
                                                    on  route_result_overviews.route_id     = route_id
                                                    and route_result_overviews.vehicle_code = vehicle_code,
-        }
-        where
-            result_vehicle_final_cost_km > 0;
+    }
+    where
+        result_vehicle_final_cost_km > 0;
 
 
 define view RouteOverview as
@@ -339,11 +343,12 @@ define view RouteOverview as
             result_total_cost_km,
             count(distinct customers.id) as customer_count : Integer,
 
-            cost_per_volume :Association to TotalOutput on cost_per_volume.route_id=route_id,
-            cost_per_weight :Association to TotalOutput on cost_per_weight.route_id=route_id,
-            cost_per_item :Association to TotalOutput on cost_per_item.route_id=route_id,
-
-
+            cost_per_volume                                : Association to TotalOutput
+                                                                 on cost_per_volume.route_id = route_id,
+            cost_per_weight                                : Association to TotalOutput
+                                                                 on cost_per_weight.route_id = route_id,
+            cost_per_item                                  : Association to TotalOutput
+                                                                 on cost_per_item.route_id = route_id,
 
 
             total_distance                                 : Association to SolutionTotalDistance
@@ -357,9 +362,9 @@ define view RouteOverview as
                                                                  on vehicle_aggregate.route_id = route_id,
             route_result_aggregate                         : Association to SolutionRouteResultsAggregates
                                                                  on route_result_aggregate.route_id = route_id
-                                                             }
-                                                             group by
-                                                                 route_id;
+    }
+    group by
+        route_id;
 
 // ANALYTICS VIEWS - Annotations
 
