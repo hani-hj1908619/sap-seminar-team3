@@ -1,6 +1,6 @@
 const cds = require("@sap/cds");
 
-class VRPAnalyticsService extends cds.ApplicationService {
+class EvaluationService extends cds.ApplicationService {
   init() {
     this.on("summary", (req) => this.getAISummary(req));
     return super.init();
@@ -8,7 +8,7 @@ class VRPAnalyticsService extends cds.ApplicationService {
 
   async getAISummary(req) {
     let solutions = await SELECT().from(
-      this.entities.SolutionPerformanceAnalytics
+      this.entities.SolutionPerformanceAnalytics4
     );
     const headers = Object.keys(solutions[0]);
     let csv = headers.join(",") + "\n";
@@ -104,4 +104,4 @@ async function doQuery(token, body) {
     .catch((error) => console.log(error));
 }
 
-module.exports = VRPAnalyticsService;
+module.exports = EvaluationService;

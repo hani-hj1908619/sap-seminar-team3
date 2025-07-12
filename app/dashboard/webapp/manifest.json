@@ -135,15 +135,6 @@
                     "type": "AnalyticalTable",
                     "selectionMode": "Single"
                   }
-                },
-                "@com.sap.vocabularies.UI.v1.LineItem#SolutionPerformanceTable": {
-                  "actions": {
-                    "openDiagram": {
-                      "requiresSelection": false,
-                      "text": "Summary Insights",
-                      "press": ".extension.dashboard.ext.controller.SolutionListExt.getAISummary"
-                    }
-                  }
                 }
               },
               "views": {
@@ -252,9 +243,6 @@
         "sap.ui.controllerExtensions": {
           "sap.fe.templates.ObjectPage.ObjectPageController": {
             "controllerName": "dashboard.ext.controller.SolutionAndVehicleOverviewControllerExt"
-          },
-          "sap.fe.templates.ListReport.ListReportController#dashboard::SolutionPerformanceAnalyticsList": {
-            "controllerName": "dashboard.ext.controller.SolutionListExt"
           }
         }
       }

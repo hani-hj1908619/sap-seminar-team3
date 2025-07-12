@@ -100,11 +100,6 @@
           "pattern": ":?query:",
           "name": "SolutionPerformanceAnalytics4List",
           "target": "SolutionPerformanceAnalytics4List"
-        },
-        {
-          "pattern": "SolutionPerformanceAnalytics4({key}):?query:",
-          "name": "SolutionPerformanceAnalytics4ObjectPage",
-          "target": "SolutionPerformanceAnalytics4ObjectPage"
         }
       ],
       "targets": {
@@ -116,18 +111,21 @@
             "settings": {
               "contextPath": "/SolutionPerformanceAnalytics4",
               "variantManagement": "Page",
-              "navigation": {
-                "SolutionPerformanceAnalytics4": {
-                  "detail": {
-                    "route": "SolutionPerformanceAnalytics4ObjectPage"
-                  }
-                }
-              },
+              "navigation": {},
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
                     "type": "AnalyticalTable",
                     "selectionMode": "Auto"
+                  }
+                },
+                "@com.sap.vocabularies.UI.v1.LineItem#EvaluationTable": {
+                  "actions": {
+                    "openDiagram": {
+                      "requiresSelection": false,
+                      "text": "Summary Insights",
+                      "press": ".extension.evaluate.evaluate.ext.controller.SolutionListExt.getAISummary"
+                    }
                   }
                 }
               },
@@ -173,16 +171,14 @@
               }
             }
           }
-        },
-        "SolutionPerformanceAnalytics4ObjectPage": {
-          "type": "Component",
-          "id": "SolutionPerformanceAnalytics4ObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
-          "options": {
-            "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/SolutionPerformanceAnalytics4"
-            }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ListReport.ListReportController#evaluate.evaluate::SolutionPerformanceAnalytics4List": {
+            "controllerName": "evaluate.evaluate.ext.controller.SolutionListExt"
           }
         }
       }

@@ -4,7 +4,7 @@ sap.ui.define(
     "use strict";
 
     return ControllerExtension.extend(
-      "dashboard.ext.controller.SolutionListExt",
+      "evaluate.evaluate.ext.controller.SolutionListExt",
       {
         getAISummary: async function () {
           const oExtensionAPI = this.base.getExtensionAPI();
@@ -15,7 +15,7 @@ sap.ui.define(
             this.oSummaryDialog = await this.base
               .getExtensionAPI()
               .loadFragment({
-                name: "dashboard.ext.fragment.AiSummaryDialog",
+                name: "evaluate.evaluate.ext.fragment.AiSummaryDialog",
                 controller: this,
               });
             oView.addDependent(this.oSummaryDialog);

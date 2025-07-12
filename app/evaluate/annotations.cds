@@ -1,27 +1,8 @@
 using EvaluationService as service from '../../srv/service';
 
 
-// ========================================
-// SOLUTION LIST PAGE
-// ========================================
-
 annotate service.SolutionPerformanceAnalytics4 with @(
-    // star ratings used in the header facet
-    UI.DataPoint #VolumeUtilizationRating                     : {
-        $Type        : 'UI.DataPointType',
-        Value        : avg_volume_utilization_rating,
-        Title        : 'Volume Utilization Rating',
-        TargetValue  : 5,
-        Visualization: #Rating,
-    },
-    UI.DataPoint #WeightUtilizationRating                     : {
-        $Type        : 'UI.DataPointType',
-        Value        : avg_weight_utilization_rating,
-        Title        : 'Weight Utilization Rating',
-        TargetValue  : 5,
-        Visualization: #Rating,
-    },
-    UI.PresentationVariant #EvaluationPresentation: {
+    UI.PresentationVariant #EvaluationPresentation       : {
         MaxItems      : 50,
         SortOrder     : [
             {
@@ -39,46 +20,43 @@ annotate service.SolutionPerformanceAnalytics4 with @(
         ]
     },
 
-    UI.Chart #alpChart : {
-        $Type : 'UI.ChartDefinitionType',
-        ChartType : #VerticalBullet,
-        Dimensions : [
+    UI.Chart #alpChart                                   : {
+        $Type          : 'UI.ChartDefinitionType',
+        ChartType      : #VerticalBullet,
+        Dimensions     : [
             route_id,
             result_total_cost_km
         ],
-        DynamicMeasures : [
+        DynamicMeasures: [
             '@Analytics.AggregatedProperty#cost_per_item_average',
             '@Analytics.AggregatedProperty#cost_per_weight_average',
             '@Analytics.AggregatedProperty#cost_per_volume_average',
-            
+
         ],
     },
-    Analytics.AggregatedProperty #cost_per_item_average : {
-        $Type : 'Analytics.AggregatedPropertyType',
-        Name : 'cost_per_item_average',
-        AggregatableProperty : cost_per_item,
-        AggregationMethod : 'average',
-        @Common.Label : 'cost_per_item (Average)',
+    Analytics.AggregatedProperty #cost_per_item_average  : {
+        $Type               : 'Analytics.AggregatedPropertyType',
+        Name                : 'cost_per_item_average',
+        AggregatableProperty: cost_per_item,
+        AggregationMethod   : 'average',
+        @Common.Label       : 'cost_per_item (Average)',
     },
-    Analytics.AggregatedProperty #cost_per_weight_average : {
-        $Type : 'Analytics.AggregatedPropertyType',
-        Name : 'cost_per_weight_average',
-        AggregatableProperty : cost_per_weight,
-        AggregationMethod : 'average',
-        @Common.Label : 'cost_per_weight (Average)',
+    Analytics.AggregatedProperty #cost_per_weight_average: {
+        $Type               : 'Analytics.AggregatedPropertyType',
+        Name                : 'cost_per_weight_average',
+        AggregatableProperty: cost_per_weight,
+        AggregationMethod   : 'average',
+        @Common.Label       : 'cost_per_weight (Average)',
     },
-    Analytics.AggregatedProperty #cost_per_volume_average : {
-        $Type : 'Analytics.AggregatedPropertyType',
-        Name : 'cost_per_volume_average',
-        AggregatableProperty : cost_per_volume,
-        AggregationMethod : 'average',
-        @Common.Label : 'cost_per_volume (Average)',
+    Analytics.AggregatedProperty #cost_per_volume_average: {
+        $Type               : 'Analytics.AggregatedPropertyType',
+        Name                : 'cost_per_volume_average',
+        AggregatableProperty: cost_per_volume,
+        AggregationMethod   : 'average',
+        @Common.Label       : 'cost_per_volume (Average)',
     },
-    );
+);
 
-
-
-// Line Item for table view
 annotate service.SolutionPerformanceAnalytics4 with @(UI.LineItem #EvaluationTable: [
     {
         $Type: 'UI.DataField',

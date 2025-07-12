@@ -75,8 +75,6 @@ service VRPAnalyticsService @(path: '/vrp-analytics') {
                 vehicle_aggregate.avg_weight_utilization_rating,
                 vehicle_aggregate.avg_volume_utilization_rating
         };
-
-    function summary() returns LargeString;
 }
 
 // ANNOTATIONS - For UI titles
@@ -281,6 +279,7 @@ service EvaluationService @(path: '/vrp-analytics-task4') {
 
         };
 
+    function summary() returns LargeString;
 }
 
 annotate EvaluationService.SolutionPerformanceAnalytics4 with {
