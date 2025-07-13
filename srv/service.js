@@ -32,6 +32,7 @@ You are an expert data analyst tasked with interpreting and summarizing performa
 - Differentiate performance across various VRP scenarios if possible (e.g., large vs small customer count, high vs low vehicle usage).
 - Visualize insights where appropriate (e.g., distribution of compliance %, cost vs utilization, etc.).
 - Present actionable observations about what makes a VRP solution effective.
+- Do all of the above in a single response.
 
 Finally, provide a concise summary of the overall performance of the VRP solutions based on the provided data.
 
@@ -50,8 +51,11 @@ The CSV data provided consists of multiple records, each representing a VRP solu
       stop: "null",
     };
 
+    console.log("Request body: \n" + JSON.stringify(body, null, 2));
+
     const bearerToken = await getToken();
     const response = await doQuery(bearerToken, body);
+    console.log("Response: \n" + JSON.stringify(response, null, 2));
     const result = response.choices[0].message.content;
     console.log("Answer: \n" + result);
 
