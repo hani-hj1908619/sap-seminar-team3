@@ -29,8 +29,8 @@
       "inbounds": {
         "dashboard-dashboard": {
           "semanticObject": "dashboard",
-          "action": "dashboard",
-          "title": "{{dashboard-dashboard.flpTitle}}",
+          "action": "dashboarding",
+          "title": "{{dashboard-dashboarding.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
