@@ -8,7 +8,6 @@ build-parameters:
   before-all:
     - builder: custom
       commands:
-        #- npx cds build --production
         - rm -rf vrp-solutions-ui-deployer/resources
         - npm install --production
         - npx -p @sap/cds-dk cds build --production
