@@ -9,6 +9,7 @@
     "@sap/cds": ">=9",
     "express": "^4",
     "@cap-js/hana": "^2",
+    "dotenv": "^17.1.0",
     "@sap/xssec": "^4"
   },
   "devDependencies": {
@@ -20,14 +21,10 @@
   "scripts": {
     "start": "cds-serve",
     "watch-dashboard": "cds watch --open dashboard/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-project2": "cds watch --open project2/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-evaluate": "cds watch --open evaluate/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
-    "app/dashboard",
-    "app/dashboard",
-    "app/project2",
     "app/dashboard",
     "app/project1",
     "app/evaluate"
