@@ -28,19 +28,19 @@
 			"payload": {
 				"viz": [
 					{
-					"id": "dashboard.dashboarding",
+					"id": "dashboard.display",
 					"appId": "dashboard",
-					"vizId": "dashboard-dashboarding"
+					"vizId": "Dashboard-display"
 				},
 				{
-					"id": "analyze.analyze",
+					"id": "project1.display",
 					"appId": "project1",
-					"vizId": "analyze-analyze"
+					"vizId": "Analyze-display"
 				},
 				{
-					"id": "evaluate.evaluating",
+					"id": "evaluate.display",
 					"appId": "evaluate",
-					"vizId": "evaluate-evaluating"
+					"vizId": "Evaluate-display"
 				}
 			]
 			}

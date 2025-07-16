@@ -27,10 +27,9 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "analyze-analyze": {
-          "semanticObject": "analyze",
-          "action": "analyze",
-          "title": "{{analyze-analyze.flpTitle}}",
+        "analyze": {
+          "semanticObject": "Analyze",
+          "action": "display",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"

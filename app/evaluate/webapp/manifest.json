@@ -27,10 +27,9 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "evaluate-evaluating": {
-          "semanticObject": "evaluate",
-          "action": "evaluating",
-          "title": "{{evaluate-evaluating.flpTitle}}",
+        "evaluate": {
+          "semanticObject": "Evaluate",
+          "action": "display",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"

@@ -27,10 +27,9 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "dashboard-dashboard": {
-          "semanticObject": "dashboard",
-          "action": "dashboarding",
-          "title": "{{dashboard-dashboarding.flpTitle}}",
+        "dashboard": {
+          "semanticObject": "Dashboard",
+          "action": "display",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
