@@ -28,6 +28,7 @@ modules:
     requires:
       - name: vrp-solutions-db
       - name: vrp-solutions-auth
+    
 
   - name: vrp-solutions-db-deployer
     type: hdb
@@ -37,32 +38,52 @@ modules:
     requires:
       - name: vrp-solutions-db
 
-  - name: vrp-solutions-ui-resources
-    type: com.sap.application.content
-    path: gen/ui-resources
-    requires:
-      - name: vrp-solutions-html5-repo-host
-        parameters:
-          content-target: true
-    build-parameters:
-      requires:
-        - name: vrp-solutions
-          artifacts:
-            - ./*.zip
-          target-path: .
-
-  - name: vrp-solutions
+  - name: dashboard
     type: html5
     path: app/dashboard
+    parameters:
+      disk-quota: 1024M
     build-parameters:
       builder: custom
       commands:
         - npm install
         - npx -p @ui5/cli ui5 build --dest ../../gen/app/dashboard/dist --include-task=generateManifestBundle --include-task=generateCachebusterInfo
-        - bash -c "cd ../../gen/app/dashboard/dist && npx bestzip ../vrp-solutions.zip *"
-      supported-platforms:
-        []
+        - bash -c "cd ../../gen/app/dashboard/dist && zip -r ../dashboard.zip * -x '*.zip'"
+        - rm -rf node_modules
+      supported-platforms: []
       build-result: ../../gen/app/dashboard
+
+  - name: vrp-solutions-ui-resources
+    type: com.sap.application.content
+    path: gen/ui-resources
+    parameters:
+      memory: 512M
+      disk-quota: 4096M
+      buildpack: nodejs_buildpack
+    requires:
+      - name: vrp-solutions-html5-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources/
+      requires:
+        - name: dashboard
+          artifacts:
+            - dashboard.zip
+          target-path: resources/
+
+  # - name: vrp-solutions
+  #   type: html5
+  #   path: app/dashboard
+  #   build-parameters:
+  #     builder: custom
+  #     commands:
+  #       - npm install
+  #       - npx -p @ui5/cli ui5 build --dest ../../gen/app/dashboard/dist --include-task=generateManifestBundle --include-task=generateCachebusterInfo
+  #       - bash -c "cd ../../gen/app/dashboard/dist && npx bestzip ../vrp-solutions.zip *"
+  #     supported-platforms:
+  #       []
+  #     build-result: ../../gen/app/dashboard
 
   - name: vrp-solutions-portal-content-deployer
     type: com.sap.application.content
@@ -92,7 +113,7 @@ modules:
         group: destinations
         properties:
           forwardAuthToken: true
-          strictSSL: true
+          strictSSL: false
           name: srv-api
           url: '~{srv-url}'
 
