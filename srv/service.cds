@@ -1,7 +1,7 @@
 using sap.capire.vrp as vrp from '../db/schema';
 
 
-service VRPAnalyticsService @(path: '/odata/v4/vrp-analytics') {
+service VRPAnalyticsService @(path: '/vrp-analytics') {
     // Supporting entities for drill down
     @readonly  @cds.redirection.target
     entity RouteSettings                as projection on vrp.RouteSettings;
