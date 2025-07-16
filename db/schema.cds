@@ -220,10 +220,6 @@ define view SolutionRouteResultsAggregates as
     select from RouteResultsOverview {
         key route_id,
             route,
-            customer,
-            customer_code,
-            vehicle,
-            vehicle_code,
             count( * ) as route_total_stops          : Integer,
             round(
                 1.0 * sum(case
@@ -241,9 +237,7 @@ define view SolutionRouteResultsAggregates as
             )          as time_window_compliance_pct : Decimal
     }
     group by
-        route_id,
-        customer_code,
-        vehicle_code;
+        route_id;
 
 // ANALYTICS VIEWS - Main
 
