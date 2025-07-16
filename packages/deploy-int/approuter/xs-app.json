@@ -14,7 +14,7 @@
       "authenticationType": "xsuaa"
     },
     {
-      "source": "^/odata/v4/vrp-analytics/(.*)$",
+      "source": "^/vrp-analytics/(.*)$",
       "destination": "srv-api",
       "authenticationType": "xsuaa"
     }
