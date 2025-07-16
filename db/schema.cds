@@ -170,7 +170,8 @@ define view TotalOutput as
             result_total_cost_km / sum(number_of_articles) as cost_per_item   : Decimal,
     }
     group by
-        Customers.route_id;
+        Customers.route_id,
+        result_total_cost_km;
 
 // vehicle aggregates on a solution level
 define view SolutionVehicleAggregates as
@@ -240,7 +241,9 @@ define view SolutionRouteResultsAggregates as
             )          as time_window_compliance_pct : Decimal
     }
     group by
-        route_id;
+        route_id,
+        customer_code,
+        vehicle_code;
 
 // ANALYTICS VIEWS - Main
 
@@ -364,7 +367,9 @@ define view RouteOverview as
                                                                  on route_result_aggregate.route_id = route_id
     }
     group by
-        route_id;
+        route_id,
+        route_date,
+        result_total_cost_km;
 
 // ANALYTICS VIEWS - Annotations
 
