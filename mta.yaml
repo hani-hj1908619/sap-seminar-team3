@@ -53,6 +53,36 @@ modules:
       supported-platforms: []
       build-result: ../../gen/app/dashboard
 
+  - name: project1
+    type: html5
+    path: app/project1
+    parameters:
+      disk-quota: 1024M
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx -p @ui5/cli ui5 build --dest ../../gen/app/project1/dist --include-task=generateManifestBundle --include-task=generateCachebusterInfo
+        - bash -c "cd ../../gen/app/project1/dist && zip -r ../project1.zip * -x '*.zip'"
+        - rm -rf node_modules
+      supported-platforms: []
+      build-result: ../../gen/app/project1
+
+  - name: evaluate
+    type: html5
+    path: app/evaluate
+    parameters:
+      disk-quota: 1024M
+    build-parameters:
+      builder: custom
+      commands:
+        - npm install
+        - npx -p @ui5/cli ui5 build --dest ../../gen/app/evaluate/dist --include-task=generateManifestBundle --include-task=generateCachebusterInfo
+        - bash -c "cd ../../gen/app/evaluate/dist && zip -r ../evaluate.zip * -x '*.zip'"
+        - rm -rf node_modules
+      supported-platforms: []
+      build-result: ../../gen/app/evaluate
+
   - name: vrp-solutions-ui-resources
     type: com.sap.application.content
     path: gen/ui-resources
@@ -70,6 +100,14 @@ modules:
         - name: dashboard
           artifacts:
             - dashboard.zip
+          target-path: resources/
+        - name: project1
+          artifacts:
+            - project1.zip
+          target-path: resources/
+        - name: evaluate
+          artifacts:
+            - evaluate.zip
           target-path: resources/
 
   # - name: vrp-solutions

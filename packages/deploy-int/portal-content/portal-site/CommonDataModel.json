@@ -26,11 +26,23 @@
 				"i18n": "i18n/defaultGroupId.properties"
 			},
 			"payload": {
-				"viz": [{
+				"viz": [
+					{
 					"id": "dashboard.dashboarding",
 					"appId": "dashboard",
 					"vizId": "dashboard-dashboarding"
-				}]
+				},
+				{
+					"id": "analyze.analyze",
+					"appId": "project1",
+					"vizId": "analyze-analyze"
+				},
+				{
+					"id": "evaluate.evaluating",
+					"appId": "evaluate",
+					"vizId": "evaluate-evaluating"
+				}
+			]
 			}
 		}],
 		"sites": [{

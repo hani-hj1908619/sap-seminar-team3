@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "test.project1",
+    "id": "project1",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -73,7 +73,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "test.project1.i18n.i18n"
+          "bundleName": "project1.i18n.i18n"
         }
       },
       "": {
@@ -134,13 +134,13 @@
                 "header": {
                   "actions": {
                     "dashboard": {
-                      "press": "test.project1.ext.controller.Navigate.dashboard",
+                      "press": "project1.ext.controller.Navigate.dashboard",
                       "visible": true,
                       "enabled": true,
                       "text": "Dashboard"
                     },
                     "evaluate": {
-                      "press": "test.project1.ext.controller.Navigate.evaluate",
+                      "press": "project1.ext.controller.Navigate.evaluate",
                       "visible": true,
                       "enabled": true,
                       "text": "Evaluate",

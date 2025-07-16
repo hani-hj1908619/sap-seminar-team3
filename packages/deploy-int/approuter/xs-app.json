@@ -17,6 +17,16 @@
       "source": "^/vrp-analytics/(.*)$",
       "destination": "srv-api",
       "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^/vrp-analytics-task3/(.*)$",
+      "destination": "srv-api",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^/vrp-analytics-task4/(.*)$",
+      "destination": "srv-api",
+      "authenticationType": "xsuaa"
     }
   ]
 }

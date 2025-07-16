@@ -4,7 +4,7 @@ sap.ui.define(
     "use strict";
 
     return ControllerExtension.extend(
-      "evaluate.evaluate.ext.controller.SolutionListExt",
+      "evaluate.ext.controller.SolutionListExt",
       {
         override: {
           routing: {
@@ -28,7 +28,7 @@ sap.ui.define(
             this.oSummaryDialog = await this.base
               .getExtensionAPI()
               .loadFragment({
-                name: "evaluate.evaluate.ext.fragment.AiSummaryDialog",
+                name: "evaluate.ext.fragment.AiSummaryDialog",
                 controller: this,
               });
             oView.addDependent(this.oSummaryDialog);

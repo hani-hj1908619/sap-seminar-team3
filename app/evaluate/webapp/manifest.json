@@ -1,7 +1,7 @@
 {
   "_version": "1.65.0",
   "sap.app": {
-    "id": "evaluate.evaluate",
+    "id": "evaluate",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -27,10 +27,10 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "evaluate-evaluate": {
+        "evaluate-evaluating": {
           "semanticObject": "evaluate",
-          "action": "evaluate",
-          "title": "{{evaluate-evaluate.flpTitle}}",
+          "action": "evaluating",
+          "title": "{{evaluate-evaluating.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -73,7 +73,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "evaluate.evaluate.i18n.i18n"
+          "bundleName": "evaluate.i18n.i18n"
         }
       },
       "": {
@@ -124,7 +124,7 @@
                     "openDiagram": {
                       "requiresSelection": false,
                       "text": "Summary Insights",
-                      "press": ".extension.evaluate.evaluate.ext.controller.SolutionListExt.getAISummary"
+                      "press": ".extension.evaluate.ext.controller.SolutionListExt.getAISummary"
                     }
                   }
                 }
@@ -151,13 +151,13 @@
                 "header": {
                   "actions": {
                     "dashboard": {
-                      "press": "evaluate.evaluate.ext.controller.Navigate.dashboard",
+                      "press": "evaluate.ext.controller.Navigate.dashboard",
                       "visible": true,
                       "enabled": true,
                       "text": "Dashboard"
                     },
                     "analyze": {
-                      "press": "evaluate.evaluate.ext.controller.Navigate.analyze",
+                      "press": "evaluate.ext.controller.Navigate.analyze",
                       "visible": true,
                       "enabled": true,
                       "text": "Analyze",
@@ -177,8 +177,8 @@
     "extends": {
       "extensions": {
         "sap.ui.controllerExtensions": {
-          "sap.fe.templates.ListReport.ListReportController#evaluate.evaluate::SolutionPerformanceAnalytics4List": {
-            "controllerName": "evaluate.evaluate.ext.controller.SolutionListExt"
+          "sap.fe.templates.ListReport.ListReportController#evaluate::SolutionPerformanceAnalytics4List": {
+            "controllerName": "evaluate.ext.controller.SolutionListExt"
           }
         }
       }

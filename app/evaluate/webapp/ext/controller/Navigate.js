@@ -9,7 +9,7 @@ sap.ui.define([
             oCrossAppNav.toExternal({
                 target: {
                     semanticObject: "dashboard",  
-                    action: "dashboard"                     
+                    action: "dashboarding"                     
                 },
             })
         },
