@@ -183,15 +183,15 @@ define view TotalOutput as
 define view SolutionVehicleAggregates as
     select from Vehicles {
         key route_id,
-            sum(result_vehicle_final_cost_km)                                     as total_vehicle_cost            : Decimal,
+            round(sum(result_vehicle_final_cost_km),3)                                     as total_vehicle_cost            : Decimal,
             round(avg(result_vehicle_driving_weight_kg / vehicle_total_weight_kg * 100),3) as avg_weight_utilization        : Decimal,
             round(avg(result_vehicle_driving_volume_m3 / vehicle_total_volume_m3 * 100),3) as avg_volume_utilization        : Decimal,
-            sum(result_vehicle_total_driving_time_min)                            as total_driving_time            : Decimal,
-            sum(result_vehicle_total_delivery_time_min)                           as total_delivery_time           : Decimal,
+            round(sum(result_vehicle_total_driving_time_min),3)                            as total_driving_time            : Decimal,
+            round(sum(result_vehicle_total_delivery_time_min),3)                           as total_delivery_time           : Decimal,
             //new
-            avg(result_vehicle_total_active_time_min)   as total_active_time             : Decimal,
-            avg(vehicle_total_volume_m3)                as max_volume                    : Decimal,
-            avg(vehicle_total_weight_kg)                as empty_weight                  : Decimal,
+            round(avg(result_vehicle_total_active_time_min),3)   as total_active_time             : Decimal,
+            round(avg(vehicle_total_volume_m3),3)                as max_volume                    : Decimal,
+            round(avg(vehicle_total_weight_kg),3)                as empty_weight                  : Decimal,
             //old
             count(case
                       when result_vehicle_final_cost_km > 0
