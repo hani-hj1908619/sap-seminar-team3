@@ -28,7 +28,7 @@
     "crossNavigation": {
       "inbounds": {
         "dashboard": {
-          "semanticObject": "Dashboard",
+          "semanticObject": "dashboard",
           "action": "display",
           "signature": {
             "parameters": {},
@@ -157,11 +157,11 @@
               "content": {
                 "header": {
                   "actions": {
-                    "evaluate": {
-                      "press": "dashboard.ext.controller.Navigate.evaluate",
+                    "insights": {
+                      "press": "dashboard.ext.controller.Navigate.insights",
                       "visible": true,
                       "enabled": true,
-                      "text": "Evaluate"
+                      "text": "Insights"
                     },
                     "analyze": {
                       "press": "dashboard.ext.controller.Navigate.analyze",
@@ -170,7 +170,7 @@
                       "text": "Analyze",
                       "position": {
                         "placement": "Before",
-                        "anchor": "evaluate"
+                        "anchor": "insights"
                       }
                     }
                   }

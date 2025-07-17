@@ -21,13 +21,13 @@
   "scripts": {
     "start": "cds-serve",
     "watch-dashboard": "cds watch --open dashboard/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-evaluate": "cds watch --open evaluate/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-analyze": "cds watch --open analyze/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-insights": "cds watch --open insights/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
     "app/dashboard",
-    "app/project1",
-    "app/evaluate"
+    "app/analyze",
+    "app/insights"
   ],
   "cds": {
     "requires": {

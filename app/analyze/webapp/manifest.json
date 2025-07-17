@@ -1,0 +1,164 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "analyze",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:alp",
+      "version": "1.18.1",
+      "toolsId": "48d45339-fb38-42c7-9922-1322bc1eb0b6"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/vrp-analytics-task3/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "analyze": {
+          "semanticObject": "analyze",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.136.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "analyze.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "SolutionPerformanceAnalytics3List",
+          "target": "SolutionPerformanceAnalytics3List"
+        }
+      ],
+      "targets": {
+        "SolutionPerformanceAnalytics3List": {
+          "type": "Component",
+          "id": "SolutionPerformanceAnalytics3List",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/SolutionPerformanceAnalytics3",
+              "variantManagement": "Page",
+              "navigation": {},
+              "views": {
+                "paths": [
+                  {
+                    "defaultPath": "both",
+                    "primary": [
+                      {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#CorrelationPresentation"
+                      }
+                    ],
+                    "secondary": [
+                      {
+                        "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#AnalyticTable"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "initialLoad": "Enabled",
+              "content": {
+                "header": {
+                  "actions": {
+                    "dashboard": {
+                      "press": "analyze.ext.controller.Navigate.dashboard",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Dashboard"
+                    },
+                    "insights": {
+                      "press": "analyze.ext.controller.Navigate.insights",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "Insights",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "dashboard"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  }
+}

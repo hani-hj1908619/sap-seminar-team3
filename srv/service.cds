@@ -290,7 +290,7 @@ service EvaluationService @(path: '/vrp-analytics-task4') {
                 vehicle_aggregate.max_volume,
                 vehicle_aggregate.empty_weight,
                 total_output.cost_per_volume,
-                total_output.cost_per_weight,
+                total_output.cost_per_weight : Decimal(5,3),
                 total_output.cost_per_item
 
         };
@@ -316,7 +316,7 @@ annotate EvaluationService.SolutionPerformanceAnalytics4 with {
     total_active_time           @title: 'Total Time'              @Measures.Unit: 'min';
     max_volume                  @title: 'Total Volume'            @Measures.Unit: 'm³';
     empty_weight                @title: 'Empty Weight'            @Measure.Uni  : 'kg';
-    cost_per_item               @title: 'Cost of Items Delivered';
-    cost_per_volume             @title: 'Cost of Volume Delivered';
-    cost_per_weight             @title: 'Cost of Weight Delivered'
+    cost_per_item               @title: 'Cost per Item Delivered';
+    cost_per_volume             @title: 'Cost per Volume Delivered';
+    cost_per_weight             @title: 'Cost per Weight Delivered'
 }

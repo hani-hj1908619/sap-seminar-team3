@@ -4,11 +4,11 @@ sap.ui.define([
     'use strict';
 
     return {
-        insights: function() {
+        dashboard: function(oEvent) {
             var oCrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
             oCrossAppNav.toExternal({
                 target: {
-                    semanticObject: "insights",  
+                    semanticObject: "dashboard",  
                     action: "display"                     
                 },
             })
@@ -21,6 +21,6 @@ sap.ui.define([
                     action: "display"                     
                 },
             })
-        },
+        }
     };
 });

@@ -53,35 +53,35 @@ modules:
       supported-platforms: []
       build-result: ../../gen/app/dashboard
 
-  - name: project1
+  - name: analyze
     type: html5
-    path: app/project1
+    path: app/analyze
     parameters:
       disk-quota: 1024M
     build-parameters:
       builder: custom
       commands:
         - npm install
-        - npx -p @ui5/cli ui5 build --dest ../../gen/app/project1/dist --include-task=generateManifestBundle --include-task=generateCachebusterInfo
-        - bash -c "cd ../../gen/app/project1/dist && zip -r ../project1.zip * -x '*.zip'"
+        - npx -p @ui5/cli ui5 build --dest ../../gen/app/analyze/dist --include-task=generateManifestBundle --include-task=generateCachebusterInfo
+        - bash -c "cd ../../gen/app/analyze/dist && zip -r ../analyze.zip * -x '*.zip'"
         - rm -rf node_modules
       supported-platforms: []
-      build-result: ../../gen/app/project1
+      build-result: ../../gen/app/analyze
 
-  - name: evaluate
+  - name: insights
     type: html5
-    path: app/evaluate
+    path: app/insights
     parameters:
       disk-quota: 1024M
     build-parameters:
       builder: custom
       commands:
         - npm install
-        - npx -p @ui5/cli ui5 build --dest ../../gen/app/evaluate/dist --include-task=generateManifestBundle --include-task=generateCachebusterInfo
-        - bash -c "cd ../../gen/app/evaluate/dist && zip -r ../evaluate.zip * -x '*.zip'"
+        - npx -p @ui5/cli ui5 build --dest ../../gen/app/insights/dist --include-task=generateManifestBundle --include-task=generateCachebusterInfo
+        - bash -c "cd ../../gen/app/insights/dist && zip -r ../insights.zip * -x '*.zip'"
         - rm -rf node_modules
       supported-platforms: []
-      build-result: ../../gen/app/evaluate
+      build-result: ../../gen/app/insights
 
   - name: vrp-solutions-ui-resources
     type: com.sap.application.content
@@ -101,13 +101,13 @@ modules:
           artifacts:
             - dashboard.zip
           target-path: resources/
-        - name: project1
+        - name: analyze
           artifacts:
-            - project1.zip
+            - analyze.zip
           target-path: resources/
-        - name: evaluate
+        - name: insights
           artifacts:
-            - evaluate.zip
+            - insights.zip
           target-path: resources/
 
   # - name: vrp-solutions

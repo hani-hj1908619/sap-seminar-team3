@@ -30,17 +30,17 @@
 					{
 					"id": "dashboard.display",
 					"appId": "dashboard",
-					"vizId": "Dashboard-display"
+					"vizId": "dashboard-display"
 				},
 				{
-					"id": "project1.display",
-					"appId": "project1",
-					"vizId": "Analyze-display"
+					"id": "analyze.display",
+					"appId": "analyze",
+					"vizId": "analyze-display"
 				},
 				{
-					"id": "evaluate.display",
-					"appId": "evaluate",
-					"vizId": "Evaluate-display"
+					"id": "insights.display",
+					"appId": "insights",
+					"vizId": "insights-display"
 				}
 			]
 			}

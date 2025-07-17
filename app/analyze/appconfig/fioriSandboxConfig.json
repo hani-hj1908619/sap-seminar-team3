@@ -1,0 +1,9 @@
+{
+  "applications": {
+    "dashboard-display": {
+      "additionalInformation": "SAPUI5.Component=dashboard",
+      "applicationType": "URL",
+      "url": "../resources/dashboard"
+    }
+  }
+}

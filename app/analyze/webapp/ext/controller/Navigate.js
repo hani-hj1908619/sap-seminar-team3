@@ -4,6 +4,15 @@ sap.ui.define([
     'use strict';
 
     return {
+        dashboard: function() {
+            var oCrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
+            oCrossAppNav.toExternal({
+                target: {
+                    semanticObject: "dashboard",  
+                    action: "display"                     
+                },
+            })
+        },
         insights: function() {
             var oCrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
             oCrossAppNav.toExternal({
@@ -12,15 +21,6 @@ sap.ui.define([
                     action: "display"                     
                 },
             })
-        },
-        analyze: function() {
-            var oCrossAppNav = sap.ushell.Container.getService("CrossApplicationNavigation");
-            oCrossAppNav.toExternal({
-                target: {
-                    semanticObject: "analyze",  
-                    action: "display"                     
-                },
-            })
-        },
+        }
     };
 });

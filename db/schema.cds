@@ -165,7 +165,7 @@ define view TotalOutput as
         on Customers.route_id = RouteSettings.route_id
     {
         key Customers.route_id,
-            result_total_cost_km / sum(total_weight_kg)    as cost_per_weight : Decimal,
+            result_total_cost_km / sum(total_weight_kg)    as cost_per_weight : Decimal(5,3),
             result_total_cost_km / sum(total_volume_m3)    as cost_per_volume : Decimal,
             result_total_cost_km / sum(number_of_articles) as cost_per_item   : Decimal,
     }
