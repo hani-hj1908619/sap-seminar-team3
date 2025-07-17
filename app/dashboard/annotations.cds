@@ -60,6 +60,11 @@ annotate service.SolutionPerformanceAnalytics with @(
         TargetValue  : 5,
         Visualization: #Rating,
     },
+    UI.DataPoint #SolutionClassification                     : {
+        $Type        : 'UI.DataPointType',
+        Value        : solution_quality,
+        Title        : 'Solution Classification',
+    },
 );
 
 // Solution Analytics List Page Charts
@@ -114,6 +119,11 @@ annotate service.SolutionPerformanceAnalytics with @(UI.LineItem #SolutionPerfor
         $Type: 'UI.DataField',
         Value: route_date,
         Label: 'Route Date'
+    },
+    {
+        $Type: 'UI.DataField',
+        Value: solution_quality,
+        Label: 'Solution Classification'
     },
     {
         $Type: 'UI.DataField',
@@ -188,6 +198,11 @@ annotate service.SolutionPerformanceAnalytics with @(UI: {
             $Type : 'UI.ReferenceFacet',
             ID    : 'Weight_Utilization_Rating',
             Target: '@UI.DataPoint#WeightUtilizationRating'
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID    : 'Solution_Classification',
+            Target: '@UI.DataPoint#SolutionClassification'
         },
     ],
     FieldGroup #Overview: {Data: [

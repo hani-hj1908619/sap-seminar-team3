@@ -73,7 +73,23 @@ service VRPAnalyticsService @(path: '/vrp-analytics') {
                 vehicle_aggregate.total_driving_time,
                 vehicle_aggregate.total_delivery_time,
                 vehicle_aggregate.avg_weight_utilization_rating,
-                vehicle_aggregate.avg_volume_utilization_rating
+                vehicle_aggregate.avg_volume_utilization_rating,
+                // Solution classification
+                 case
+                when total_output.cost_per_item <= 0.08
+                  and $self.avg_weight_utilization_rating >= 2
+                  and $self.avg_volume_utilization_rating >= 3.5
+                  and $self.time_window_compliance_pct = 100
+                    then 'Optimal'
+
+                when total_output.cost_per_item <= 0.11
+                  and $self.avg_weight_utilization_rating >= 1.5
+                  and $self.avg_volume_utilization_rating >= 3
+                  and $self.time_window_compliance_pct = 100
+                    then 'Acceptable'
+
+                else 'Suboptimal'
+            end as solution_quality : String
         };
 }
 
