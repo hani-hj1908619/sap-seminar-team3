@@ -75,21 +75,21 @@ service VRPAnalyticsService @(path: '/vrp-analytics') {
                 vehicle_aggregate.avg_weight_utilization_rating,
                 vehicle_aggregate.avg_volume_utilization_rating,
                 // Solution classification
-                 case
-                when total_output.cost_per_item <= 0.08
-                  and $self.avg_weight_utilization_rating >= 2
-                  and $self.avg_volume_utilization_rating >= 3.5
-                  and $self.time_window_compliance_pct = 100
-                    then 'Optimal'
+                case
+                    when total_output.cost_per_item <= 0.08
+                         and $self.avg_weight_utilization_rating >= 2
+                         and $self.avg_volume_utilization_rating >= 3.5
+                         and $self.time_window_compliance_pct = 100
+                         then 'Optimal'
 
-                when total_output.cost_per_item <= 0.11
-                  and $self.avg_weight_utilization_rating >= 1.5
-                  and $self.avg_volume_utilization_rating >= 3
-                  and $self.time_window_compliance_pct = 100
-                    then 'Acceptable'
+                    when total_output.cost_per_item <= 0.11
+                         and $self.avg_weight_utilization_rating >= 1.5
+                         and $self.avg_volume_utilization_rating >= 3
+                         and $self.time_window_compliance_pct = 100
+                         then 'Acceptable'
 
-                else 'Suboptimal'
-            end as solution_quality : String
+                    else 'Suboptimal'
+                end as solution_quality : String
         };
 }
 
@@ -101,7 +101,7 @@ annotate VRPAnalyticsService.SolutionPerformanceAnalytics with {
     result_total_cost_km        @title: 'Total Cost'              @Measures.Unit: 'km';
     customer_count              @title: 'Customers';
     total_distance              @title: 'Total Distance'          @Measures.Unit: 'km';
-    time_window_compliance_pct  @title: 'Time Window Compliance'  @Measures.Unit: '%';
+    time_window_compliance_pct  @title: 'Time Window Compliance (%)';
     route_total_stops           @title: 'Total Stops';
     vehicle_count               @title: 'Vehicles';
     total_vehicle_cost          @title: 'Total Vehicle Cost';
