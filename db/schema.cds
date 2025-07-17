@@ -340,12 +340,8 @@ define view RouteOverview as
             result_total_cost_km,
             count(distinct customers.id) as customer_count : Integer,
 
-            cost_per_volume                                : Association to TotalOutput
-                                                                 on cost_per_volume.route_id = route_id,
-            cost_per_weight                                : Association to TotalOutput
-                                                                 on cost_per_weight.route_id = route_id,
-            cost_per_item                                  : Association to TotalOutput
-                                                                 on cost_per_item.route_id = route_id,
+            total_output                                   : Association to TotalOutput
+                                                                 on total_output.route_id = route_id,
 
 
             total_distance                                 : Association to SolutionTotalDistance
