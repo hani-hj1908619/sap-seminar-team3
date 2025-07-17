@@ -121,7 +121,7 @@ annotate service.SolutionPerformanceAnalytics3 with @(
         Name : 'max_volume_average',
         AggregatableProperty : max_volume,
         AggregationMethod : 'average',
-        ![@Common.Label] : 'max_volume (Average)',
+        ![@Common.Label] : 'Max Volume (m³)',
     },
 
 );
