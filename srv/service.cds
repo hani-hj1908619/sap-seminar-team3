@@ -96,20 +96,22 @@ service VRPAnalyticsService @(path: '/vrp-analytics') {
 // ANNOTATIONS - For UI titles
 
 annotate VRPAnalyticsService.SolutionPerformanceAnalytics with {
-    route_id                    @title: 'Route ID';
-    route_date                  @title: 'Route Date';
-    result_total_cost_km        @title: 'Total Cost'              @Measures.Unit: 'km';
-    customer_count              @title: 'Customers';
-    total_distance              @title: 'Total Distance'          @Measures.Unit: 'km';
-    time_window_compliance_pct  @title: 'Time Window Compliance (%)';
-    route_total_stops           @title: 'Total Stops';
-    vehicle_count               @title: 'Vehicles';
-    total_vehicle_cost          @title: 'Total Vehicle Cost';
+    route_id                      @title: 'Route ID';
+    route_date                    @title: 'Route Date';
+    result_total_cost_km          @title: 'Total Cost'           @Measures.Unit: 'km';
+    customer_count                @title: 'Customers';
+    total_distance                @title: 'Total Distance'       @Measures.Unit: 'km';
+    time_window_compliance_pct    @title: 'Time Window Compliance (%)';
+    route_total_stops             @title: 'Total Stops';
+    vehicle_count                 @title: 'Vehicles';
+    total_vehicle_cost            @title: 'Total Vehicle Cost';
     // for some reason using @Measures.Unit: '%' makes the values in table view empty for these fields
-    avg_weight_utilization      @title: 'Avg Weight Utilization (%)';
-    avg_volume_utilization      @title: 'Avg Volume Utilization (%)';
-    total_driving_time          @title: 'Total Driving Time'      @Measures.Unit: 'min';
-    total_delivery_time         @title: 'Total Delivery Time'     @Measures.Unit: 'min';
+    avg_weight_utilization        @title: 'Avg Weight Utilization (%)';
+    avg_volume_utilization        @title: 'Avg Volume Utilization (%)';
+    avg_weight_utilization_rating @title: 'Avg Weight Utilization Rating';
+    avg_volume_utilization_rating @title: 'Avg Volume Utilization Rating';
+    total_driving_time            @title: 'Total Driving Time'   @Measures.Unit: 'min';
+    total_delivery_time           @title: 'Total Delivery Time'  @Measures.Unit: 'min';
 }
 
 service CorrelationService @(path: '/vrp-analytics-task3') {
