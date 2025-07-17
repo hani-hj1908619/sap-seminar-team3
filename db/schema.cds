@@ -35,10 +35,10 @@ entity Vehicles {
         vehicle_variable_cost_km               : Decimal;
         vehicle_available_time_from_min        : Integer;
         vehicle_available_time_to_min          : Integer;
-        result_vehicle_total_driving_time_min  : Decimal;
+        result_vehicle_total_driving_time_min  : Decimal(5,3);
         result_vehicle_total_delivery_time_min : Decimal;
         result_vehicle_total_active_time_min   : Decimal;
-        result_vehicle_driving_weight_kg       : Decimal;
+        result_vehicle_driving_weight_kg       : Decimal(5,3);
         result_vehicle_driving_volume_m3       : Decimal;
         result_vehicle_final_cost_km           : Decimal;
 
@@ -165,9 +165,9 @@ define view TotalOutput as
         on Customers.route_id = RouteSettings.route_id
     {
         key Customers.route_id,
-            result_total_cost_km / sum(total_weight_kg)    as cost_per_weight : Decimal(5,3),
-            result_total_cost_km / sum(total_volume_m3)    as cost_per_volume : Decimal,
-            result_total_cost_km / sum(number_of_articles) as cost_per_item   : Decimal,
+            round(result_total_cost_km / sum(total_weight_kg),5)    as cost_per_weight : Decimal,
+            round(result_total_cost_km / sum(total_volume_m3),5)    as cost_per_volume : Decimal,
+            round(result_total_cost_km / sum(number_of_articles),5) as cost_per_item   : Decimal,
     }
     group by
         Customers.route_id,
@@ -178,9 +178,9 @@ define view SolutionVehicleAggregates as
     select from Vehicles {
         key route_id,
             sum(result_vehicle_final_cost_km)                                     as total_vehicle_cost            : Decimal,
-            avg(result_vehicle_driving_weight_kg / vehicle_total_weight_kg * 100) as avg_weight_utilization        : Decimal,
-            avg(result_vehicle_driving_volume_m3 / vehicle_total_volume_m3 * 100) as avg_volume_utilization        : Decimal,
-            sum(result_vehicle_total_driving_time_min)                            as total_driving_time            : Decimal,
+            round(avg(result_vehicle_driving_weight_kg / vehicle_total_weight_kg * 100),3) as avg_weight_utilization        : Decimal,
+            round(avg(result_vehicle_driving_volume_m3 / vehicle_total_volume_m3 * 100),3) as avg_volume_utilization        : Decimal,
+            sum(result_vehicle_total_driving_time_min)                            as total_driving_time            : Decimal(5,3),
             sum(result_vehicle_total_delivery_time_min)                           as total_delivery_time           : Decimal,
             //new
             avg(result_vehicle_total_active_time_min)                             as total_active_time             : Decimal,
@@ -233,7 +233,7 @@ define view SolutionRouteResultsAggregates as
                               when customer_code != '1000'
                                    then 1
                           end), 0
-                ) * 100, 1
+                ) * 100, 3
             )          as time_window_compliance_pct : Decimal
     }
     group by
@@ -278,16 +278,10 @@ define view VehicleOverview as
             result_vehicle_driving_weight_kg,
             result_vehicle_driving_volume_m3,
             result_vehicle_final_cost_km,
-            (
-                round(
-                    result_vehicle_driving_weight_kg / vehicle_total_weight_kg * 100, 2
-                )
-            )   as weight_utilization_pct    : Decimal,
-            (
-                round(
-                    result_vehicle_driving_volume_m3 / vehicle_total_volume_m3 * 100, 2
-                )
-            )   as volume_utilization_pct    : Decimal,
+            
+            round( result_vehicle_driving_weight_kg / vehicle_total_weight_kg * 100, 3)   as weight_utilization_pct    : Decimal(5,3),
+            
+            round(result_vehicle_driving_volume_m3 / vehicle_total_volume_m3 * 100, 3) as volume_utilization_pct    : Decimal,
 
             case
                 when result_vehicle_driving_weight_kg > 0

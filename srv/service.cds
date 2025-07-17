@@ -290,7 +290,7 @@ service EvaluationService @(path: '/vrp-analytics-task4') {
                 vehicle_aggregate.max_volume,
                 vehicle_aggregate.empty_weight,
                 total_output.cost_per_volume,
-                total_output.cost_per_weight : Decimal(5,3),
+                total_output.cost_per_weight,
                 total_output.cost_per_item
 
         };
