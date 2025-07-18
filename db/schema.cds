@@ -377,7 +377,7 @@ annotate VehicleOverview with {
     vehicle_total_volume_m3           @title: 'Max Volume'      @Measures.Unit: 'm³';
     result_vehicle_driving_weight_kg  @title: 'Driving Weight'  @Measures.Unit: 'kg';
     result_vehicle_driving_volume_m3  @title: 'Driving Volume'  @Measures.Unit: 'm³';
-    result_vehicle_final_cost_km      @title: 'Final Cost'      @Measures.Unit: 'km';
+    result_vehicle_final_cost_km      @title: 'Final Cost'      @Measures.Unit: '€';
     // for some reason using @Measures.Unit: '%' makes the values in table view empty for these fields
     weight_utilization_pct            @title: 'Weight Utilization (%)';
     volume_utilization_pct            @title: 'Volume Utilization (%)';

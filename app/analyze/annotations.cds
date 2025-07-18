@@ -106,6 +106,8 @@ annotate service.SolutionPerformanceAnalytics3 with @(
             '@Analytics.AggregatedProperty#Route_Total_Cost',
             '@Analytics.AggregatedProperty#empty_weight_average',
             '@Analytics.AggregatedProperty#max_volume_average',
+            '@Analytics.AggregatedProperty#total_driving_time_average',
+
             
         ],
     },
@@ -122,6 +124,13 @@ annotate service.SolutionPerformanceAnalytics3 with @(
         AggregatableProperty : max_volume,
         AggregationMethod : 'average',
         ![@Common.Label] : 'Max Volume (m³)',
+    },
+    Analytics.AggregatedProperty #total_driving_time_average : {
+        $Type : 'Analytics.AggregatedPropertyType',
+        Name : 'total_driving_time_average',
+        AggregatableProperty : total_driving_time,
+        AggregationMethod : 'average',
+        @Common.Label : 'Average Driving Time (min)',
     },
 
 );
