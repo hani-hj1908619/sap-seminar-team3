@@ -107,6 +107,10 @@ annotate service.SolutionPerformanceAnalytics3 with @(
             '@Analytics.AggregatedProperty#empty_weight_average',
             '@Analytics.AggregatedProperty#max_volume_average',
             '@Analytics.AggregatedProperty#total_driving_time_average',
+            '@Analytics.AggregatedProperty#total_distance_average',
+            '@Analytics.AggregatedProperty#vehicle_count_average',
+            '@Analytics.AggregatedProperty#total_vehicle_cost_average',
+            '@Analytics.AggregatedProperty#avg_weight_utilization_average',
 
             
         ],
@@ -131,6 +135,34 @@ annotate service.SolutionPerformanceAnalytics3 with @(
         AggregatableProperty : total_driving_time,
         AggregationMethod : 'average',
         @Common.Label : 'Average Driving Time (min)',
+    },
+    Analytics.AggregatedProperty #total_distance_average : {
+        $Type : 'Analytics.AggregatedPropertyType',
+        Name : 'total_distance_average',
+        AggregatableProperty : total_distance,
+        AggregationMethod : 'average',
+        @Common.Label : 'Total Distance (km)',
+    },
+    Analytics.AggregatedProperty #vehicle_count_average : {
+        $Type : 'Analytics.AggregatedPropertyType',
+        Name : 'vehicle_count_average',
+        AggregatableProperty : vehicle_count,
+        AggregationMethod : 'average',
+        @Common.Label : 'Number of Vehicles',
+    },
+    Analytics.AggregatedProperty #total_vehicle_cost_average : {
+        $Type : 'Analytics.AggregatedPropertyType',
+        Name : 'total_vehicle_cost_average',
+        AggregatableProperty : total_vehicle_cost,
+        AggregationMethod : 'average',
+        @Common.Label : 'Vehicle Cost',
+    },
+    Analytics.AggregatedProperty #avg_weight_utilization_average : {
+        $Type : 'Analytics.AggregatedPropertyType',
+        Name : 'avg_weight_utilization_average',
+        AggregatableProperty : avg_weight_utilization,
+        AggregationMethod : 'average',
+        @Common.Label : 'Weight Utilization',
     },
 
 );
