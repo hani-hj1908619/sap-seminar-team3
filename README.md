@@ -85,9 +85,10 @@ Only the required views are included in each service to optimize performance and
 - **Performance tables & object pages**: list of solutions, solution details page with embedded vehicle lists
 
 ### 2. Analyze (`app/analyze`)
-- **Task 3**: Supports correlation analysis between metrics
+- **Task 3**: Supports relation analysis between metrics
 - Consumes views from `CorrelationService`
-- Standard list/table UI for correlation metrics (add details if needed)
+- Standard list/table UI for relation (add details if needed)
+- Shows what vehicle attribute most correlate with route constraints
 
 ### 3. Insights (`app/insights`)
 - **Task 4**: Provides AI‑generated summaries and qualitative insight
