@@ -87,7 +87,7 @@ Only the required views are included in each service to optimize performance and
 ### 2. Analyze (`app/analyze`)
 - **Task 3**: Supports relation analysis between metrics
 - Consumes views from `CorrelationService`
-- Standard list/table UI for relation (add details if needed)
+- Standard list/table UI for relation
 - Shows what vehicle attribute most correlate with route constraints
 
 ### 3. Insights (`app/insights`)
